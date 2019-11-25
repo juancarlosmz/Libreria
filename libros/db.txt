@@ -1,0 +1,135 @@
+-- phpMyAdmin SQL Dump
+-- version 4.2.11
+-- http://www.phpmyadmin.net
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 26-10-2019 a las 21:11:14
+-- Versión del servidor: 5.6.21
+-- Versión de PHP: 5.6.3
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Base de datos: `androidbd`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `autor`
+--
+
+CREATE TABLE IF NOT EXISTS `autor` (
+  `idautor` varchar(10) NOT NULL,
+  `apellidos` varchar(100) NOT NULL,
+  `nombres` varchar(40) NOT NULL,
+  `pais` varchar(50) NOT NULL,
+  `correo` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `donacion`
+--
+
+CREATE TABLE IF NOT EXISTS `donacion` (
+  `idusuario` varchar(8) NOT NULL,
+  `fecreg` date NOT NULL,
+  `idlibro` varchar(10) NOT NULL,
+`numreg` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ejemplares`
+--
+
+CREATE TABLE IF NOT EXISTS `ejemplares` (
+  `idlibro` varchar(10) NOT NULL,
+  `fecing` date NOT NULL,
+  `numejemplar` int(11) NOT NULL,
+  `estado` int(11) NOT NULL,
+  `tipoingreso` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `libro`
+--
+
+CREATE TABLE IF NOT EXISTS `libro` (
+  `idlibro` varchar(10) NOT NULL,
+  `titulo` varchar(100) NOT NULL,
+  `idautor` int(10) NOT NULL,
+  `edicion` int(11) NOT NULL,
+  `editorial` varchar(100) NOT NULL,
+  `numpaginas` int(11) NOT NULL,
+  `year` int(11) NOT NULL,
+  `estado` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `idusuario` varchar(8) NOT NULL,
+  `apater` varchar(50) NOT NULL,
+  `amater` varchar(50) NOT NULL,
+  `nombres` varchar(40) NOT NULL,
+  `correo` varchar(100) NOT NULL,
+  `cel` varchar(9) NOT NULL,
+  `clave` varchar(7) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`idusuario`, `apater`, `amater`, `nombres`, `correo`, `cel`, `clave`) VALUES
+('06013925', 'CABREJOS', 'BARCO', 'LILIANA', 'LCABRJOS@GMAIL.COM', '926732775', '1234567'),
+('07604337', 'ARCE', 'RODRIGUEZ', 'CARMEN', 'CARCE@HOTMAIL.COM', '964258793', '1234567');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `autor`
+--
+ALTER TABLE `autor`
+ ADD PRIMARY KEY (`idautor`);
+
+--
+-- Indices de la tabla `donacion`
+--
+ALTER TABLE `donacion`
+ ADD PRIMARY KEY (`numreg`);
+
+--
+-- Indices de la tabla `libro`
+--
+ALTER TABLE `libro`
+ ADD PRIMARY KEY (`idlibro`);
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+ ADD PRIMARY KEY (`idusuario`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `donacion`
+--
+ALTER TABLE `donacion`
+MODIFY `numreg` int(11) NOT NULL AUTO_INCREMENT;
