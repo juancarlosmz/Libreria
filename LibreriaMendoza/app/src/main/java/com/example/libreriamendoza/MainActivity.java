@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         StringBuilder resul = new StringBuilder();
 
         try{
-            url = new URL("http://192.168.1.60:50/libros/valida.php?usu="+usu+"&pas="+pas);
+            url = new URL("http://192.168.0.13:50/Libreria/libros/valida.php?usu="+usu+"&pas="+pas);
             HttpURLConnection connection =(HttpURLConnection )url.openConnection();
             respuesta = connection.getResponseCode();
             //resul = new StringBuilder();

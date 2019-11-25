@@ -108,7 +108,7 @@ public class Sistema extends AppCompatActivity implements View.OnClickListener {
         StringBuilder resul = new StringBuilder();
 
         try{
-            url = new URL("http://192.168.1.60:50/libros/ver.php?cod="+cod);
+            url = new URL("http://192.168.0.13:50/Libreria/libros/ver.php?cod="+cod);
             HttpURLConnection connection =(HttpURLConnection )url.openConnection();
             respuesta = connection.getResponseCode();
             if(respuesta == HttpURLConnection.HTTP_OK){
