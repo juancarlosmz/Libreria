@@ -2,5 +2,6 @@
     <string name="app_name">LibreriaMendoza</string>
     <string name="strBienvenido">Bienvenido</string>
     <string name="strLogin">Entrar</string>
+    <string name="strRegistro">Registro</string>
     <string name="strVerInformacion">Ver Información</string>
 </resources>
