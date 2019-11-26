@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Registro"></activity>
+        <activity android:name=".CambioContra"></activity>
+        <activity android:name=".Registro" />
         <activity android:name=".Sistema" />
         <activity android:name=".MainActivity">
             <intent-filter>

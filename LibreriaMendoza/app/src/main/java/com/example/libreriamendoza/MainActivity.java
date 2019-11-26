@@ -34,25 +34,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ingresa=(Button)findViewById(R.id.btningreso);
         registrate=(Button)findViewById(R.id.btnregistro);
         ingresa.setOnClickListener(this);
-        registrate.setOnClickListener(this);
+
+
+        //btn registro
+        registrate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i = new Intent(getApplicationContext(),Registro.class);
+                        startActivity(i);
+                        finish();
+                    }
+                }).start();
+            }
+        });
     }
     @Override
     public void onClick(View view) {
 
-
         Thread tr = new Thread(){
             public void run(){
-
                 final String resultado = enviarDatosGET( usuario.getText().toString(), password.getText().toString());
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
                         System.out.println("El resultado es : "+obtDatosJSON(resultado));
                         int r = obtDatosJSON(resultado);
-
-
-
                         if (r>0){
                             Intent i = new Intent(getApplicationContext(),Sistema.class);
                             i.putExtra("cod",usuario.getText().toString());
@@ -66,26 +75,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             };
         };
 
-        /*
-        Thread tr = new Thread(){
-            public void run(){
-
-                String resultado = enviarDatosGET( usuario.getText().toString(), password.getText().toString());
-
-                System.out.println("El resultado es : "+obtDatosJSON(resultado));
-
-            };
-        };
-        */
         tr.start();
     }
-
+/*
     public void onRegistro(View view) {
         Intent i = new Intent(getApplicationContext(),Registro.class);
         startActivity(i);
         finish();
     }
-
+*/
     public String enviarDatosGET(String usu, String pas){
 
         System.out.println("lo que se envia : "+usu+pas+"lo que se envia");
@@ -96,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         StringBuilder resul = new StringBuilder();
 
         try{
-            url = new URL("http://192.168.1.60:50/Libreria/libros/valida.php?usu="+usu+"&pas="+pas);
+            url = new URL("http://192.168.0.13:50/Libreria/libros/valida.php?usu="+usu+"&pas="+pas);
             HttpURLConnection connection =(HttpURLConnection )url.openConnection();
             respuesta = connection.getResponseCode();
             //resul = new StringBuilder();

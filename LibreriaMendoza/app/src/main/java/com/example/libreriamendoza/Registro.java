@@ -52,14 +52,15 @@ public class Registro extends AppCompatActivity implements View.OnClickListener{
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        System.out.println("El resultado es : "+obtDatosJSON(resultado));
-                        int r = obtDatosJSON(resultado);
-                        if (r>0){
-                            Intent i = new Intent(getApplicationContext(),Sistema.class);
-                            //i.putExtra("cod",usuario.getText().toString());
+                        System.out.println("El resultado oficial es : "+resultado);
+                        String respuestaEvaluar = resultado;
+                        if(respuestaEvaluar.equals("Usuario Creado")){
+                            Toast.makeText(getApplicationContext(),"Usuario registrado",Toast.LENGTH_LONG).show();
+                            Intent i = new Intent(getApplicationContext(),MainActivity.class);
                             startActivity(i);
+                            finish();
                         }else{
-                            Toast.makeText(getApplicationContext(),"Usuario o clave incorrectas",Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(),"Usuario no registrado o ya existe",Toast.LENGTH_LONG).show();
                         }
                     }
                 });
@@ -74,14 +75,16 @@ public class Registro extends AppCompatActivity implements View.OnClickListener{
         int respuesta = 0;
         StringBuilder resul = new StringBuilder();
         try{
-            url = new URL("http://192.168.1.60:50/Libreria/libros/Registro.php?dni="+dni+"&apater="+apater+"&amater="+amater+"&nombres="+nombres+"&correo="+correo+"&cel="+cel+"&clave="+clave);
+            url = new URL("http://192.168.0.13:50/Libreria/libros/Registro.php?dni="+dni+"&apater="+apater+"&amater="+amater+"&nombres="+nombres+"&correo="+correo+"&cel="+cel+"&clave="+clave);
             HttpURLConnection connection =(HttpURLConnection )url.openConnection();
             respuesta = connection.getResponseCode();
+            System.out.println("--------------respuesta1: "+respuesta+"--------------------------------");
             if(respuesta == HttpURLConnection.HTTP_OK){
                 InputStream in = new BufferedInputStream(connection.getInputStream());
                 BufferedReader reader = new BufferedReader(new InputStreamReader(in));
                 while ((linea=reader.readLine()) != null){
                     resul.append(linea);
+                    System.out.println("--------------respuesta2: "+resul.toString()+"--------------------------------");
                 }
             }
         }catch (Exception e){

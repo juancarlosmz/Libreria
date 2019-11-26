@@ -3,5 +3,14 @@
     <string name="strBienvenido">Bienvenido</string>
     <string name="strLogin">Entrar</string>
     <string name="strRegistro">Registro</string>
+    <string name="strRegistroNuevo">Nuevo Registro</string>
     <string name="strVerInformacion">Ver Información</string>
+    <string name="strCambiocontra">Cambiar contraceña</string>
+    <string name="strSalir">Salir</string>
+    <string name="strdni">DNI: </string>
+    <string name="strapater">A. Paterno: </string>
+    <string name="strmater">A. Materno: </string>
+    <string name="strnombres">Nombres: </string>
+    <string name="strcorreo">Correo: </string>
+    <string name="strcelular">Celular: </string>
 </resources>

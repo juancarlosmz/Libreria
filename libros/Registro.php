@@ -11,12 +11,15 @@
 	$clave = $_REQUEST['clave'];
 
 	$cnx = new PDO("mysql:host=localhost; dbname=libreria","root","");
-	$res = $cnx->query("INSERT INTO usuario(idusuario,apater,amater,nombres,correo,cel,clave) 
-						VALUES ('$dni','$apater','$amater','$nombres','$correo','$cel','$clave')";
+	$res = $cnx->query("INSERT INTO usuario(idusuario,apater,amater,nombres,correo,cel,clave) VALUES ('$dni','$apater','$amater','$nombres','$correo','$cel','$clave')");
 	$datos = array();
-	foreach ($res as $row) {
-		$datos[]=$row;
+	if($res == TRUE) {
+		echo "Usuario Creado";
+	}else {
+	    echo "Error";
 	}
-	echo json_encode($datos);
+
+
+
 
 ?>
