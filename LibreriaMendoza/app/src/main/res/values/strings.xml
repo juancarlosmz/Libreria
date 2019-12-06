@@ -3,6 +3,9 @@
     <string name="strBienvenido">Bienvenido</string>
     <string name="strLogin">Entrar</string>
     <string name="strRegistro">Registro</string>
+    <string name="strBuscar">Buscar</string>
+    <string name="strModificar">Modificar</string>
+    <string name="strEliinar">Eliminar</string>
     <string name="strRegistroNuevo">Nuevo Registro</string>
     <string name="strVerInformacion">Ver Información</string>
     <string name="strCambiocontra">Cambiar contraceña</string>
@@ -13,4 +16,6 @@
     <string name="strnombres">Nombres: </string>
     <string name="strcorreo">Correo: </string>
     <string name="strcelular">Celular: </string>
+    <string name="strmautor">Mantenimiento Autor</string>
+    <string name="strmlibro">Mantenimiento Libro</string>
 </resources>

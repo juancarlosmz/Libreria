@@ -25,7 +25,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sistema extends AppCompatActivity implements View.OnClickListener {
+public class Sistema extends AppCompatActivity  {
     TextView txtusuario,txtnombres,txtapater,txtamater,txtcorreo,txtcel;
     public Button ver;
     private String usuario;
@@ -43,15 +43,62 @@ public class Sistema extends AppCompatActivity implements View.OnClickListener {
         txtcorreo = (TextView)findViewById(R.id.etcorreo);
         txtcel = (TextView)findViewById(R.id.etcel);
 
-
+/*
         ver=(Button)findViewById(R.id.btnver);
         ver.setOnClickListener(this);
-
+*/
         Bundle datos = this.getIntent().getExtras();
         //int recuperamos_variable_integer = datos.getInt("variable_integer");
         usuario = datos.getString("cod");
         txtusuario.setText(usuario);
         //float recuperamos_variable_float = datos.getFloat("objeto_float");
+
+
+
+        Thread tr = new Thread(){
+            public void run(){
+                final String resultado = enviarDatosGET( usuario);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        int r = obtDatosJSON(resultado);
+                        if (r>0){
+                            try {
+                                JSONArray jsonArray = new JSONArray(resultado);
+                                JSONObject obj = jsonArray.getJSONObject(0);
+                                String apater = obj.getString("apater");
+                                String amater = obj.getString("amater");
+                                String nombres = obj.getString("nombres");
+                                String correo = obj.getString("correo");
+                                String cel = obj.getString("cel");
+
+                                txtnombres.setText(nombres);
+                                txtapater.setText(apater);
+                                txtamater.setText(amater);
+                                txtcorreo.setText(correo);
+                                txtcel.setText(cel);
+
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+
+                        }else{
+                            Toast.makeText(getApplicationContext(),"Error de consulta",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+            };
+        };
+
+
+
+        tr.start();
+
+
+
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,11 +110,20 @@ public class Sistema extends AppCompatActivity implements View.OnClickListener {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id==R.id.mnuCambiocontra) {
-            Toast.makeText(this,"Cambio de contraceña",Toast.LENGTH_LONG).show();
             Intent i = new Intent(this, CambioContra.class );
             i.putExtra("cod",txtusuario.getText().toString());
             startActivity(i);
+        }
+        if (id==R.id.mnuMAutor) {
+            Intent i = new Intent(this, MAutor.class );
+            i.putExtra("cod",txtusuario.getText().toString());
+            startActivity(i);
+        }
 
+        if (id==R.id.mnuMLibro) {
+            Intent i = new Intent(this, MLibro.class );
+            i.putExtra("cod",txtusuario.getText().toString());
+            startActivity(i);
         }
 
         if (id==R.id.mnuSalir) {
@@ -77,6 +133,7 @@ public class Sistema extends AppCompatActivity implements View.OnClickListener {
         return super.onOptionsItemSelected(item);
     }
 
+    /*
     @Override
     public void onClick(View view) {
 
@@ -121,7 +178,7 @@ public class Sistema extends AppCompatActivity implements View.OnClickListener {
 
         tr.start();
     }
-
+*/
     public String enviarDatosGET(String cod){
         URL url = null;
         String linea = "";

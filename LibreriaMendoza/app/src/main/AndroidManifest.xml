@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CambioContra"></activity>
+        <activity android:name=".MLibro"></activity>
+        <activity android:name=".MAutor" />
+        <activity android:name=".CambioContra" />
         <activity android:name=".Registro" />
         <activity android:name=".Sistema" />
         <activity android:name=".MainActivity">

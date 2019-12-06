@@ -5,6 +5,12 @@
         android:id="@+id/mnuCambiocontra"
         android:title="@string/strCambiocontra" />
     <item
+        android:id="@+id/mnuMAutor"
+        android:title="@string/strmautor" />
+    <item
+        android:id="@+id/mnuMLibro"
+        android:title="@string/strmlibro" />
+    <item
         android:id="@+id/mnuSalir"
         android:title="@string/strSalir" />
 </menu>

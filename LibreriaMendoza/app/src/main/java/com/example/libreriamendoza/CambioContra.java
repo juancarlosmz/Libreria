@@ -56,6 +56,17 @@ public class CambioContra extends AppCompatActivity implements View.OnClickListe
             startActivity(i);
             finish();
         }
+        if (id==R.id.mnuMAutor) {
+            Intent i = new Intent(this, MAutor.class );
+            startActivity(i);
+            finish();
+        }
+
+        if (id==R.id.mnuMLibro) {
+            Intent i = new Intent(this, MLibro.class );
+            startActivity(i);
+            finish();
+        }
 
         if (id==R.id.mnuSalir) {
             Toast.makeText(this,"Se seleccionó la opción Salir",Toast.LENGTH_LONG).show();
