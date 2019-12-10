@@ -25,6 +25,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener{
 
     public Button Registrar;
     public EditText txtclave,txtdni,txtnombres,txtapater,txtamater,txtcorreo,txtcel;
+    String MyUrl = "http://192.168.0.13:50/Libreria/libros/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +76,7 @@ public class Registro extends AppCompatActivity implements View.OnClickListener{
         int respuesta = 0;
         StringBuilder resul = new StringBuilder();
         try{
-            url = new URL("http://192.168.0.13:50/Libreria/libros/Registro.php?dni="+dni+"&apater="+apater+"&amater="+amater+"&nombres="+nombres+"&correo="+correo+"&cel="+cel+"&clave="+clave);
+            url = new URL(MyUrl+"Registro.php?dni="+dni+"&apater="+apater+"&amater="+amater+"&nombres="+nombres+"&correo="+correo+"&cel="+cel+"&clave="+clave);
             HttpURLConnection connection =(HttpURLConnection )url.openConnection();
             respuesta = connection.getResponseCode();
             System.out.println("--------------respuesta1: "+respuesta+"--------------------------------");

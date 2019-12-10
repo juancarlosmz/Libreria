@@ -27,6 +27,7 @@ import java.util.List;
 
 public class Sistema extends AppCompatActivity  {
     TextView txtusuario,txtnombres,txtapater,txtamater,txtcorreo,txtcel;
+    String MyUrl = "http://192.168.0.13:50/Libreria/libros/";
     public Button ver;
     private String usuario;
 
@@ -186,7 +187,7 @@ public class Sistema extends AppCompatActivity  {
         StringBuilder resul = new StringBuilder();
 
         try{
-            url = new URL("http://192.168.0.13:50/Libreria/libros/ver.php?cod="+cod);
+            url = new URL(MyUrl+"ver.php?cod="+cod);
             HttpURLConnection connection =(HttpURLConnection )url.openConnection();
             respuesta = connection.getResponseCode();
             if(respuesta == HttpURLConnection.HTTP_OK){

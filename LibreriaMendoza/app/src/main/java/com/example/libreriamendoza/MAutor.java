@@ -26,7 +26,7 @@ public class MAutor extends AppCompatActivity implements View.OnClickListener{
 
     public Button RegistrarAutor,BuscarAutor,ModificarAutor,EliminarAutor;
     public EditText txtid,txtnombres,txtapellidos,txtpais,txtcorreo,txtBuscarID;
-    String MyUrl = "http://192.168.0.13:50/Libreria/libros/";
+    String MyUrl = "http://192.168.0.13:50/Libreria/libros/Autor/";
 
 
     @Override

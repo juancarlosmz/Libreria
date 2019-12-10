@@ -23,7 +23,7 @@ import java.net.URL;
 public class CambioContra extends AppCompatActivity implements View.OnClickListener{
     public Button Cambiocontra;
     public EditText txtcantigua,txtcnueva,txtcconfirmar;
-
+    String MyUrl = "http://192.168.0.13:50/Libreria/libros/";
     private String usuario;
 
     @Override
@@ -106,7 +106,7 @@ public class CambioContra extends AppCompatActivity implements View.OnClickListe
         int respuesta = 0;
         StringBuilder resul = new StringBuilder();
         try{
-            url = new URL("http://192.168.0.13:50/Libreria/libros/CambioContra.php?usu="+usu+"&cantigua="+cantigua+"&cnueva="+cnueva+"&cconfirmar="+cconfirmar);
+            url = new URL(MyUrl+"CambioContra.php?usu="+usu+"&cantigua="+cantigua+"&cnueva="+cnueva+"&cconfirmar="+cconfirmar);
             HttpURLConnection connection =(HttpURLConnection )url.openConnection();
             respuesta = connection.getResponseCode();
             System.out.println("--------------respuesta1: "+respuesta+"--------------------------------");
